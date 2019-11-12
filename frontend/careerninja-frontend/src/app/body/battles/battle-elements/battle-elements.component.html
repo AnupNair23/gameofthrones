@@ -1,0 +1,88 @@
+<div class="main-div">
+  <div class="battle-div" *ngFor="let battle of battles | paginate: { itemsPerPage: 1, currentPage: p }">
+    <h6>tonight's</h6>
+    <div class="row battle-div-row">
+      <h1>{{battle.name}}</h1>
+      <div class="md-6">
+        <div id="vs-v">
+          <p>v</p>
+        </div>
+        <div id="king">
+          <img src="../../../../assets/johnsnow.jpeg">
+          <h2 *ngIf="battle.attacker_king != ''">{{battle.attacker_king | slice:0:10}}</h2>
+          <h2 *ngIf="battle.attacker_king === ''">----</h2>
+          <hr>
+          <h4 *ngIf = "battle.attacker_outcome != ''">attacker outcome : {{battle.attacker_outcome}}</h4>
+          <h4 *ngIf = "battle.attacker_outcome === ''">attacker outcome : ----</h4>
+        </div>
+        <figure class="tint">
+          <img src="../../../../assets/thrones.jpg">
+        </figure>
+      </div>
+      <div class="md-6">
+        <div id="vs-s">
+          <p>s</p>
+        </div>
+        <div id="king">
+          <img src="../../../../assets/johnsnow.jpeg">
+          <h2 *ngIf="battle.defender_king != ''">{{battle.defender_king | slice:0:10}}</h2>
+          <h2 *ngIf="battle.defender_king === ''">----</h2>
+          <hr>
+          <h4 *ngIf="battle.attacker_outcome === 'win'">defender outcome : loss</h4>
+          <h4 *ngIf="battle.attacker_outcome === 'loss'">defender outcome : win</h4>
+          <h4 *ngIf="battle.attacker_outcome === ''">defender outcome : ----</h4>
+
+        </div>
+        <figure class="tint t2">
+          <img src="../../../../assets/thrones.jpg">
+        </figure>
+      </div>
+    </div>
+    <div class="row bottom-row">
+      <div class="col-md-1 col-img">
+        <img src="../../../../assets/lion.png">
+      </div>
+      <div class="col-md-10 battle-details">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="details-king">
+              <div class="attacker">
+                <img src="../../../../assets/skull.png">
+                <p>139</p>
+              </div>
+              <div class="attacker">
+                <img src="../../../../assets/skull.png">
+                <p>99</p>
+              </div>
+              <div class="attacker">
+                <img src="../../../../assets/skull.png">
+                <p>89</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="details-king">
+              <div class="attacker">
+                <img src="../../../../assets/skull.png">
+                <p>139</p>
+              </div>
+              <div class="attacker">
+                <img src="../../../../assets/skull.png">
+                <p>99</p>
+              </div>
+              <div class="attacker">
+                <img src="../../../../assets/skull.png">
+                <p>89</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1 col-img">
+        <img src="../../../../assets/lion.png">
+      </div>
+    </div>
+  </div>
+
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
